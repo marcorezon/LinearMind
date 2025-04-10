@@ -15,7 +15,7 @@ public class Clock {
             while (isTimeRunning) {
                 try {
                     if (timerCounter == timeSpan) {
-                        stopTimer();
+                        pauseTimer();
                         clockCicle++;
                         timerCounter = 0;
                     }
@@ -31,7 +31,7 @@ public class Clock {
         timerThread.start();
     }
 
-    public void stopTimer() {
+    public void pauseTimer() {
         isTimeRunning = false;
         if (timerThread != null && timerThread.isAlive()) {
             timerThread.interrupt();

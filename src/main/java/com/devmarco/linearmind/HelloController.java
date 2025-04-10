@@ -37,8 +37,8 @@ public class HelloController {
     }
 
     @FXML
-    protected void onStopButtonClick() {
-        clock.stopTimer();
+    protected void onPauseButtonClick() {
+        clock.pauseTimer();
         stopLabelUpdate();
 
         stopButton.setDisable(true);

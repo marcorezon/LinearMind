@@ -16,7 +16,7 @@
    <ButtonBar buttonMinWidth="80.0" maxWidth="-Infinity" prefHeight="40.0">
      <buttons>
        <Button fx:id="startButton" alignment="CENTER" onAction="#onStartButtonClick" text="Start"/>
-       <Button fx:id="stopButton" alignment="CENTER" onAction="#onStopButtonClick" disable="true" text="Stop"/>
+       <Button fx:id="stopButton" alignment="CENTER" onAction="#onPauseButtonClick" disable="true" text="Stop"/>
        <Button fx:id="resumeButton" alignment="CENTER" onAction="#onResumeButtonClick" disable="true" text="Resume"/>
      </buttons>
       <VBox.margin>

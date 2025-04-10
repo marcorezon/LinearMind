@@ -1,29 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="273.0" prefWidth="325.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.devmarco.linearmind.HelloController">
+<VBox alignment="CENTER" prefHeight="273.0" prefWidth="325.0" spacing="20.0" style="-fx-background-color: #202124;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmarco.linearmind.HelloController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
 
-  <Label fx:id="welcomeText" text="Pomodoro" />
-   <Label fx:id="timer"/>
-   <ButtonBar buttonMinWidth="80.0" maxWidth="-Infinity" prefHeight="40.0">
-     <buttons>
-       <Button fx:id="startButton" alignment="CENTER" onAction="#onStartButtonClick" text="Start"/>
-       <Button fx:id="stopButton" alignment="CENTER" onAction="#onPauseButtonClick" disable="true" text="Stop"/>
-       <Button fx:id="resumeButton" alignment="CENTER" onAction="#onResumeButtonClick" disable="true" text="Resume"/>
-     </buttons>
-      <VBox.margin>
-         <Insets />
-      </VBox.margin>
-      <opaqueInsets>
-         <Insets />
-      </opaqueInsets>
-   </ButtonBar>
+  <Label fx:id="welcomeText" text="Pomodoro" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="25.0" />
+      </font></Label>
+   <Label fx:id="timer" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font></Label>
+    <ButtonBar buttonMinWidth="80.0" maxWidth="-Infinity" prefHeight="40.0">
+        <buttons>
+            <StackPane>
+                <Button fx:id="startButton" onAction="#onStartButtonClick" style="-fx-background-color: white; -fx-border-radius: 10%;" text="Start">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="stopButton" onAction="#onPauseButtonClick" style="-fx-background-color: white; -fx-border-radius: 10%;" text="Stop" visible="false">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="resumeButton" onAction="#onResumeButtonClick" style="-fx-background-color: white; -fx-border-radius: 10%;" text="Resume" visible="false">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            </StackPane>
+        </buttons>
+    </ButtonBar>
 </VBox>

@@ -32,8 +32,8 @@ public class HelloController {
         startLabelUpdate();
         welcomeText.setText("Clock running");
 
-        startButton.setDisable(true);
-        stopButton.setDisable(false);
+        startButton.setVisible(false);
+        stopButton.setVisible(true);
     }
 
     @FXML
@@ -41,8 +41,8 @@ public class HelloController {
         clock.pauseTimer();
         stopLabelUpdate();
 
-        stopButton.setDisable(true);
-        resumeButton.setDisable(false);
+        stopButton.setVisible(false);
+        resumeButton.setVisible(true);
     }
 
     @FXML
@@ -50,8 +50,8 @@ public class HelloController {
         clock.runTimer();
         startLabelUpdate();
 
-        resumeButton.setDisable(true);
-        stopButton.setDisable(false);
+        resumeButton.setVisible(false);
+        stopButton.setVisible(true);
     }
 
     private void startLabelUpdate() {

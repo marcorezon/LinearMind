@@ -30,7 +30,7 @@
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="stopButton" onAction="#onPauseButtonClick" style="-fx-background-color: white; -fx-border-radius: 10%;" text="Stop" visible="false">
+                <Button fx:id="stopButton" onAction="#onPauseButtonClick" style="-fx-background-color: white; -fx-border-radius: 10%;" text="Pause" visible="false">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>

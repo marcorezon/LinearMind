@@ -23,7 +23,7 @@ public class Clock {
                     timerCounter++;
                     System.out.println("Time: " + timerCounter + "s");
                 } catch (InterruptedException e) {
-                    System.out.println("Timer stopped.");
+                    System.out.println("Timer paused.");
                     break;
                 }
             }

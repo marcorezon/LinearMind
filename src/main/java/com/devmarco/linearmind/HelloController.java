@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.control.ProgressIndicator;
 import javafx.util.Duration;
 
 public class HelloController {
@@ -14,13 +15,20 @@ public class HelloController {
     private Clock clock = new Clock();
 
     @FXML
+    private ProgressIndicator progressBar;
+
+    @FXML
     private Button startButton;
+
     @FXML
     private Button stopButton;
+
     @FXML
     private Button resumeButton;
+
     @FXML
-    private Label timer;
+    private Label clockCicles;
+
     @FXML
     private Label welcomeText;
 
@@ -47,11 +55,10 @@ public class HelloController {
     protected void onResumeButtonClick() {
         clock.runTimer();
         startLabelUpdate();
-
         displayButton(resumeButton, stopButton);
     }
 
-    private void displayButton (Button currentButton, Button nextButton) {
+    private void displayButton(Button currentButton, Button nextButton) {
         currentButton.setVisible(false);
         nextButton.setVisible(true);
     }
@@ -59,8 +66,8 @@ public class HelloController {
     private void startLabelUpdate() {
         if (timeline == null) {
             timeline = new Timeline(new KeyFrame(Duration.millis(500), e -> {
-                timer.setText("" + clock.getTimerCounter());
-                if(clock.getTimerCounter() == 0) {
+                progressBar.setProgress((double) clock.calculateProgress() / 100);
+                if (clock.getTimerCounter() == 0) {
                     displayButton(stopButton, startButton);
                 }
             }));

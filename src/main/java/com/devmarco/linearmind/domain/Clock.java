@@ -5,12 +5,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Clock {
-    private int timeSpan = 5;
+    private int timeSpan = 10;
     private int clockCicles = 0;
     private int timerCounter = 0;
     private boolean isTimeRunning = false;
 
-    
 
     public void runTimer() {
         if (isTimeRunning) return;
@@ -52,12 +51,9 @@ public class Clock {
         return timerCounter;
     }
 
-    public void getClockInformation() {
-        System.out.println("Clock Cicle: " + clockCicles);
-        System.out.println("Is running: " + isTimeRunning);
-        System.out.println("Timer counter: " + timerCounter);
+    public int calculateProgress() {
+        return (timerCounter * 100 / timeSpan);
     }
-
 
     public void setTimeSpan(int value) {
         timeSpan = value;

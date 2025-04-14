@@ -32,8 +32,7 @@ public class HelloController {
         startLabelUpdate();
         welcomeText.setText("Clock running");
 
-        startButton.setVisible(false);
-        stopButton.setVisible(true);
+        displayButton(startButton, stopButton);
     }
 
     @FXML
@@ -41,8 +40,7 @@ public class HelloController {
         clock.pauseTimer();
         stopLabelUpdate();
 
-        stopButton.setVisible(false);
-        resumeButton.setVisible(true);
+        displayButton(stopButton, resumeButton);
     }
 
     @FXML
@@ -50,14 +48,21 @@ public class HelloController {
         clock.runTimer();
         startLabelUpdate();
 
-        resumeButton.setVisible(false);
-        stopButton.setVisible(true);
+        displayButton(resumeButton, stopButton);
+    }
+
+    private void displayButton (Button currentButton, Button nextButton) {
+        currentButton.setVisible(false);
+        nextButton.setVisible(true);
     }
 
     private void startLabelUpdate() {
         if (timeline == null) {
             timeline = new Timeline(new KeyFrame(Duration.millis(500), e -> {
                 timer.setText("" + clock.getTimerCounter());
+                if(clock.getTimerCounter() == 0) {
+                    displayButton(stopButton, startButton);
+                }
             }));
             timeline.setCycleCount(Timeline.INDEFINITE);
         }

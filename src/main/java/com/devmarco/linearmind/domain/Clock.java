@@ -1,45 +1,51 @@
 package com.devmarco.linearmind.domain;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 public class Clock {
-    private int timeSpan = 60;
-    private int clockCicle = 0;
+    private int timeSpan = 5;
+    private int clockCicles = 0;
     private int timerCounter = 0;
     private boolean isTimeRunning = false;
-    private Thread timerThread;
+
+    
 
     public void runTimer() {
         if (isTimeRunning) return;
 
         isTimeRunning = true;
-        timerThread = new Thread(() -> {
-            while (isTimeRunning) {
-                try {
-                    if (timerCounter == timeSpan) {
-                        pauseTimer();
-                        clockCicle++;
-                        timerCounter = 0;
-                    }
-                    Thread.sleep(1000); //Mantém a thread parada durante um segundo.
-                    timerCounter++;
-                    System.out.println("Time: " + timerCounter + "s");
-                } catch (InterruptedException e) {
-                    System.out.println("Timer paused.");
-                    break;
-                }
+        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+
+        scheduler.scheduleAtFixedRate(() -> {
+            if (!isTimeRunning) {
+                scheduler.shutdown();
+                return;
             }
-        });
-        timerThread.start();
+
+            try {
+                if (timerCounter == timeSpan) {
+                    isTimeRunning = false;
+                    clockCicles++;
+                    timerCounter = 0;
+                    return;
+                }
+                timerCounter++;
+                System.out.println("Time: " + timerCounter + "s");
+            } catch (Exception e) {
+                System.out.println("Timer error.");
+                scheduler.shutdown();
+            }
+        }, 0, 1, TimeUnit.SECONDS);
     }
 
     public void pauseTimer() {
         isTimeRunning = false;
-        if (timerThread != null && timerThread.isAlive()) {
-            timerThread.interrupt();
-        }
     }
 
-    public int getClockCounter() {
-        return clockCicle;
+    public int getClockCicles() {
+        return clockCicles;
     }
 
     public int getTimerCounter() {
@@ -47,14 +53,11 @@ public class Clock {
     }
 
     public void getClockInformation() {
-        System.out.println("Clock Cicle: " + clockCicle);
+        System.out.println("Clock Cicle: " + clockCicles);
         System.out.println("Is running: " + isTimeRunning);
         System.out.println("Timer counter: " + timerCounter);
     }
 
-    public void resetTime() {
-        timerCounter = 0;
-    }
 
     public void setTimeSpan(int value) {
         timeSpan = value;

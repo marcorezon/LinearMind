@@ -27,18 +27,18 @@ public class HelloController {
     private Button resumeButton;
 
     @FXML
-    private Label clockCicles;
+    private Label title;
 
     @FXML
-    private Label welcomeText;
+    private Label timer;
 
     private Timeline timeline; // Timeline for label updates
 
     @FXML
     protected void onStartButtonClick() {
-        clock.runTimer();
         startLabelUpdate();
-        welcomeText.setText("Clock running");
+        clock.runTimer();
+        title.setText("Timer running");
 
         displayButton(startButton, stopButton);
     }
@@ -47,6 +47,7 @@ public class HelloController {
     protected void onPauseButtonClick() {
         clock.pauseTimer();
         stopLabelUpdate();
+        title.setText("Timer stopped");
 
         displayButton(stopButton, resumeButton);
     }
@@ -55,6 +56,8 @@ public class HelloController {
     protected void onResumeButtonClick() {
         clock.runTimer();
         startLabelUpdate();
+        title.setText("Timer running");
+
         displayButton(resumeButton, stopButton);
     }
 
@@ -65,16 +68,19 @@ public class HelloController {
 
     private void startLabelUpdate() {
         if (timeline == null) {
-            timeline = new Timeline(new KeyFrame(Duration.millis(500), e -> {
-                progressBar.setProgress((double) clock.calculateProgress() / 100);
-                if (clock.getTimerCounter() == 0) {
+            timeline = new Timeline(new KeyFrame(Duration.millis(1000), e -> {
+                timer.setText(clock.getTimerParameters().getCounter() + "s");
+                if (clock.getTimerParameters().getCounter() == 0) {
                     displayButton(stopButton, startButton);
+                    if(clock.isInterval()) {
+                    }
                 }
             }));
             timeline.setCycleCount(Timeline.INDEFINITE);
         }
         timeline.play();
     }
+
 
     private void stopLabelUpdate() {
         if (timeline != null) {

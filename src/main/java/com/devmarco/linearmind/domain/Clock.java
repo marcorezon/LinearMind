@@ -5,10 +5,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Clock {
-    private int timeSpan = 10;
-    private int clockCicles = 0;
-    private int timerCounter = 0;
+
+    private TimerParameters timerParameters = new TimerParameters(10, 5);
+
     private boolean isTimeRunning = false;
+    private boolean isInterval = false;
 
 
     public void runTimer() {
@@ -24,14 +25,15 @@ public class Clock {
             }
 
             try {
-                if (timerCounter == timeSpan) {
+                if (timerParameters.getCounter() == timerParameters.getActiveTime()) {
+                    isInterval = !isInterval;
                     isTimeRunning = false;
-                    clockCicles++;
-                    timerCounter = 0;
+                    timerParameters.increaseCicles();
+                    timerParameters.resetCounter();
                     return;
                 }
-                timerCounter++;
-                System.out.println("Time: " + timerCounter + "s");
+                timerParameters.increaseCounter();
+                System.out.println("Time: " + timerParameters.getCounter() + "s");
             } catch (Exception e) {
                 System.out.println("Timer error.");
                 scheduler.shutdown();
@@ -43,19 +45,15 @@ public class Clock {
         isTimeRunning = false;
     }
 
-    public int getClockCicles() {
-        return clockCicles;
+    public boolean isInterval() {
+        return isInterval;
     }
 
-    public int getTimerCounter() {
-        return timerCounter;
+    public TimerParameters getTimerParameters() {
+        return timerParameters;
     }
 
-    public int calculateProgress() {
-        return (timerCounter * 100 / timeSpan);
-    }
-
-    public void setTimeSpan(int value) {
-        timeSpan = value;
+    public void setTimerParameters(TimerParameters timerParameters) {
+        this.timerParameters = timerParameters;
     }
 }

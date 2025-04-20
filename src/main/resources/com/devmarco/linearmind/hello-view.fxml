@@ -48,7 +48,7 @@
                     <Cursor fx:constant="HAND" />
                 </cursor>
             </StackPane>
-            <Label fx:id="clockCicles" text="Cicles: 0" textFill="WHITE">
+            <Label fx:id="cicles" text="Cicles: 0" textFill="WHITE">
                 <font>
                     <Font name="System Bold" size="15.0" />
                 </font>

@@ -11,7 +11,6 @@ public class Clock {
     private boolean isTimeRunning = false;
     private boolean isInterval = false;
 
-
     public void runTimer() {
         if (isTimeRunning) return;
 
@@ -25,11 +24,13 @@ public class Clock {
             }
 
             try {
-                if (timerParameters.getCounter() == timerParameters.getActiveTime()) {
-                    isInterval = !isInterval;
+                if (shouldStop()) {
                     isTimeRunning = false;
-                    timerParameters.increaseCicles();
                     timerParameters.resetCounter();
+                    if (!isInterval) {
+                        timerParameters.increaseCicles();
+                    }
+                    isInterval = !isInterval;
                     return;
                 }
                 timerParameters.increaseCounter();
@@ -47,6 +48,13 @@ public class Clock {
 
     public boolean isInterval() {
         return isInterval;
+    }
+
+    private boolean shouldStop() {
+        if (isInterval) {
+            return timerParameters.getCounter() == timerParameters.getIntervalTime();
+        }
+        return timerParameters.getCounter() == timerParameters.getActiveTime();
     }
 
     public TimerParameters getTimerParameters() {

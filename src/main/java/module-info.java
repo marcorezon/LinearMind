@@ -3,7 +3,7 @@ module com.devmarco.linearmind {
     requires javafx.fxml;
 
     requires com.dlsc.formsfx;
-    requires java.sql;
+    requires com.google.gson;
 
     opens com.devmarco.linearmind.controllers to javafx.fxml;
     exports com.devmarco.linearmind.controllers;

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<HBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.devmarco.linearmind.controllers.SettingsController">
+    <MenuButton alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: #606060;"
+                text="Pomodoro" textFill="WHITE">
+        <items>
+            <MenuItem mnemonicParsing="false" text="Edit interval time"/>
+            <MenuItem mnemonicParsing="false" text="Edit time"/>
+        </items>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </MenuButton>
+    <MenuButton mnemonicParsing="false" style="-fx-background-color: #606060;" text="Blocker" textFill="WHITE">
+        <items>
+            <MenuItem mnemonicParsing="false" text="Block website"/>
+            <MenuItem mnemonicParsing="false" text="Block application"/>
+        </items>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </MenuButton>
+</HBox>

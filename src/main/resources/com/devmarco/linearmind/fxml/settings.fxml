@@ -1,34 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
-<HBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml" fx:controller="com.devmarco.linearmind.controllers.SettingsController">
-    <MenuButton alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: #606060;"
-                text="Pomodoro" textFill="WHITE">
-        <items>
-            <MenuItem fx:id="clockSettings" mnemonicParsing="false" text="Clock settings" onAction="#displayClockSettingsModal"/>
-        </items>
-        <cursor>
-            <Cursor fx:constant="HAND"/>
-        </cursor>
-        <font>
-            <Font name="System Bold" size="14.0"/>
-        </font>
-    </MenuButton>
-    <MenuButton mnemonicParsing="false" style="-fx-background-color: #606060;" text="Blocker" textFill="WHITE">
-        <items>
-            <MenuItem fx:id="blockWebsite" mnemonicParsing="false" text="Block website"/>
-            <MenuItem fx:id="blockApplication" text="Block application"/>
-        </items>
-        <cursor>
-            <Cursor fx:constant="HAND"/>
-        </cursor>
-        <font>
-            <Font name="System Bold" size="14.0"/>
-        </font>
-    </MenuButton>
+
+<HBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmarco.linearmind.controllers.SettingsController">
+   <Button alignment="CENTER" mnemonicParsing="false" onAction="#displayClockSettingsModal" style="-fx-background-color: #606060;" text="Timer" textFill="WHITE">
+      <font>
+         <Font size="15.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <graphic>
+         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../../images/icons/settings.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+   <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: #606060;" text="Blocker" textFill="WHITE">
+      <font>
+         <Font size="15.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <graphic>
+         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../../images/icons/settings.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
 </HBox>

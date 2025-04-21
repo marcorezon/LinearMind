@@ -15,7 +15,7 @@
         <Insets/>
     </opaqueInsets>
     <padding>
-        <Insets bottom="50.0" left="40.0" right="40.0" top="50.0"/>
+        <Insets bottom="50.0" left="35.0" right="35.0" top="50.0"/>
     </padding>
 
     <Label fx:id="title" text="Pomodoro" textFill="WHITE">

@@ -23,8 +23,8 @@
                                 <Image url="@../../../../../images/icons/alarm.png"/>
                             </image>
                         </ImageView>
-                        <Slider prefHeight="14.0" prefWidth="160.0"/>
-                        <Label alignment="CENTER" text="Minutes" textFill="WHITE">
+                        <Slider fx:id="timerSlider" prefHeight="14.0" prefWidth="160.0"/>
+                        <Label fx:id="timer" alignment="CENTER" text="Minutes" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="12.0"/>
                             </font>
@@ -38,8 +38,8 @@
                                 <Image url="@../../../../../images/icons/alarm-play.png"/>
                             </image>
                         </ImageView>
-                        <Slider prefHeight="14.0" prefWidth="160.0"/>
-                        <Label alignment="CENTER" text="Minutes" textFill="WHITE">
+                        <Slider fx:id="intervalSlider" prefHeight="14.0" prefWidth="160.0"/>
+                        <Label fx:id="interval" alignment="CENTER" text="Minutes" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="12.0"/>
                             </font>
@@ -53,8 +53,8 @@
                                 <Image url="@../../../../../images/icons/alarm-turn-off.png"/>
                             </image>
                         </ImageView>
-                        <Slider prefHeight="14.0" prefWidth="160.0"/>
-                        <Label alignment="CENTER" text="Minutes" textFill="WHITE">
+                        <Slider fx:id="interruptionSlider" prefHeight="14.0" prefWidth="160.0"/>
+                        <Label fx:id="interruption" alignment="CENTER" text="Minutes" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="12.0"/>
                             </font>

@@ -1,15 +1,17 @@
 package com.devmarco.linearmind.domain;
 
 public class TimerParameters {
-    private long activeTime;
-    private long intervalTime;
+    private static long activeTime;
+    private static long intervalTime;
+    private static long interruptionTime;
 
     private long counter = 0;
     private int cicles = 0;
 
-    public TimerParameters(long activeTime, long intervalTime) {
-        this.activeTime = activeTime;
-        this.intervalTime = intervalTime;
+    public TimerParameters(long activeTime, long intervalTime, long interruptionTime) {
+        TimerParameters.activeTime = activeTime;
+        TimerParameters.intervalTime = intervalTime;
+        TimerParameters.interruptionTime = interruptionTime;
     }
 
     //Controlling functions
@@ -28,22 +30,32 @@ public class TimerParameters {
 
     //Getters and setters
 
-    public long getActiveTime() {
+    //Static
+    public static long getActiveTime() {
         return activeTime;
     }
 
-    public void setActiveTime(long activeTime) {
-        this.activeTime = activeTime;
+    public static void setActiveTime(long activeTime) {
+        TimerParameters.activeTime = activeTime;
     }
 
-    public long getIntervalTime() {
+    public static long getIntervalTime() {
         return intervalTime;
     }
 
-    public void setIntervalTime(long intervalTime) {
-        this.intervalTime = intervalTime;
+    public static void setIntervalTime(long intervalTime) {
+        TimerParameters.intervalTime = intervalTime;
     }
 
+    public static long getInterruptionTime() {
+        return interruptionTime;
+    }
+
+    public static void setInterruptionTime(long interruptionTime) {
+        TimerParameters.interruptionTime = interruptionTime;
+    }
+
+    //Non static
     public long getCounter() {
         return counter;
     }

@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Clock {
 
-    private TimerParameters timerParameters = new TimerParameters(10, 5);
+    private TimerParameters timerParameters = new TimerParameters(10, 5, 0);
 
     private boolean isTimeRunning = false;
     private boolean isInterval = false;
@@ -52,9 +52,9 @@ public class Clock {
 
     private boolean shouldStop() {
         if (isInterval) {
-            return timerParameters.getCounter() == timerParameters.getIntervalTime();
+            return timerParameters.getCounter() == TimerParameters.getIntervalTime();
         }
-        return timerParameters.getCounter() == timerParameters.getActiveTime();
+        return timerParameters.getCounter() == TimerParameters.getActiveTime();
     }
 
     public TimerParameters getTimerParameters() {

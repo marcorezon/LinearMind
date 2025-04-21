@@ -10,8 +10,7 @@
     <MenuButton alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: #606060;"
                 text="Pomodoro" textFill="WHITE">
         <items>
-            <MenuItem mnemonicParsing="false" text="Edit interval time"/>
-            <MenuItem mnemonicParsing="false" text="Edit time"/>
+            <MenuItem fx:id="clockSettings" mnemonicParsing="false" text="Clock settings" onAction="#displayClockSettingsModal"/>
         </items>
         <cursor>
             <Cursor fx:constant="HAND"/>
@@ -22,8 +21,8 @@
     </MenuButton>
     <MenuButton mnemonicParsing="false" style="-fx-background-color: #606060;" text="Blocker" textFill="WHITE">
         <items>
-            <MenuItem mnemonicParsing="false" text="Block website"/>
-            <MenuItem mnemonicParsing="false" text="Block application"/>
+            <MenuItem fx:id="blockWebsite" mnemonicParsing="false" text="Block website"/>
+            <MenuItem fx:id="blockApplication" text="Block application"/>
         </items>
         <cursor>
             <Cursor fx:constant="HAND"/>

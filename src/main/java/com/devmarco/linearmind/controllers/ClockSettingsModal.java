@@ -4,6 +4,7 @@ import com.devmarco.linearmind.domain.TimerParameters;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.stage.Stage;
 
 public class ClockSettingsModal {
 
@@ -25,18 +26,34 @@ public class ClockSettingsModal {
     @FXML
     private Slider interruptionSlider;
 
+    private Stage modalStage;
+
+    public void setStage(Stage modalStage) {
+        this.modalStage = modalStage;
+    }
+
+    @FXML
+    private void closeModal() {
+        if (modalStage != null) {
+            modalStage.close();
+        }
+    }
+
     public void initialize() {
         timer.setText(TimerParameters.getActiveTime() + " minutes");
         interval.setText(TimerParameters.getIntervalTime() + " minutes");
         interruption.setText(TimerParameters.getInterruptionTime() + " minutes");
 
+        timerSlider.setValue(TimerParameters.getActiveTime());
         timerSlider.setMax(60);
         timerSlider.setMin(10);
         timerSlider.setBlockIncrement(5);
 
+        intervalSlider.setValue(TimerParameters.getIntervalTime());
         intervalSlider.setMax(10);
         intervalSlider.setMin(1);
 
+        interruptionSlider.setValue(TimerParameters.getInterruptionTime());
         interruptionSlider.setMax(120);
         interruptionSlider.setMin(0);
         interruptionSlider.setBlockIncrement(10);

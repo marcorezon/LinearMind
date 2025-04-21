@@ -34,6 +34,10 @@ public class SettingsController {
             Scene scene = new Scene(root);
             modalStage.setScene(scene);
 
+            // Pass the Stage to the controller
+            ClockSettingsModal controller = fxmlLoader.getController();
+            controller.setStage(modalStage);
+
             modalStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();

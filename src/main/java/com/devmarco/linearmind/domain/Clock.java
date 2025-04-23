@@ -52,9 +52,9 @@ public class Clock {
 
     private boolean shouldStop() {
         if (isInterval) {
-            return timerParameters.getCounter() == TimerParameters.getIntervalTime();
+            return timerParameters.getCounter() == TimerParameters.getInstance().getIntervalTime();
         }
-        return timerParameters.getCounter() == TimerParameters.getActiveTime();
+        return timerParameters.getCounter() == TimerParameters.getInstance().getActiveTime();
     }
 
     public TimerParameters getTimerParameters() {

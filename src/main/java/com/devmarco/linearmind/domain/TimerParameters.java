@@ -3,9 +3,12 @@ package com.devmarco.linearmind.domain;
 import com.devmarco.linearmind.util.FileManager;
 
 public class TimerParameters {
-    private static long activeTime;
-    private static long intervalTime;
-    private static long interruptionTime;
+
+    private static TimerParameters instance;
+
+    private long activeTime;
+    private long intervalTime;
+    private long interruptionTime;
 
     private long counter = 0;
     private int cicles = 0;
@@ -17,6 +20,14 @@ public class TimerParameters {
         activeTime = Long.parseLong(userInfo.getActiveTime());
         intervalTime = Long.parseLong(userInfo.getIntervalTime());
         interruptionTime = Long.parseLong(userInfo.getInterruptionTime());
+    }
+
+    public static TimerParameters getInstance(){
+        if (instance == null) {
+            instance = new TimerParameters();
+        }
+        return instance;
+
     }
 
     //Controlling functions
@@ -35,32 +46,30 @@ public class TimerParameters {
 
     //Getters and setters
 
-    //Static
-    public static long getActiveTime() {
+    public long getActiveTime() {
         return activeTime;
     }
 
-    public static void setActiveTime(long activeTime) {
-        TimerParameters.activeTime = activeTime;
+    public void setActiveTime(long activeTime) {
+        this.activeTime = activeTime;
     }
 
-    public static long getIntervalTime() {
+    public long getIntervalTime() {
         return intervalTime;
     }
 
-    public static void setIntervalTime(long intervalTime) {
-        TimerParameters.intervalTime = intervalTime;
+    public void setIntervalTime(long intervalTime) {
+        this.intervalTime = intervalTime;
     }
 
-    public static long getInterruptionTime() {
+    public long getInterruptionTime() {
         return interruptionTime;
     }
 
-    public static void setInterruptionTime(long interruptionTime) {
-        TimerParameters.interruptionTime = interruptionTime;
+    public void setInterruptionTime(long interruptionTime) {
+        this.interruptionTime = interruptionTime;
     }
 
-    //Non static
     public long getCounter() {
         return counter;
     }

@@ -1,5 +1,6 @@
 package com.devmarco.linearmind.util;
 
+import com.devmarco.linearmind.domain.UserData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -14,7 +15,7 @@ public class FileManager {
     private String userInfoDir;
 
     public FileManager() {
-        this.userInfoDir = System.getProperty("user.home") + userInfoDirName;
+        this.userInfoDir = System.getProperty("user.home") + File.separator + userInfoDirName;
         checkForUserDataExistence();
     }
 
@@ -25,26 +26,41 @@ public class FileManager {
         }
 
         File userInfoFile = new File(userInfoDir + File.separator + userInfoFileName);
+
         try {
             if (!userInfoFile.exists()) {
                 userInfoFile.createNewFile();
+                initializeFile(userInfoFile);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
-    public void writeUserInfo(Object data) {
-        String filePath = userInfoDir + File.separator + userInfoFileName;
-        Gson userData = new GsonBuilder().setPrettyPrinting().create();
-        try (FileWriter writer = new FileWriter(filePath)) {
-            userData.toJson(data, writer);
+    private void initializeFile(File filepath) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter(filepath)) {
+            UserData userData = new UserData();
+            userData.setActiveTime("25");
+            userData.setIntervalTime("5");
+            userData.setInterruptionTime("20");
+            gson.toJson(userData, writer);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
-    public String getFilePath(String fileName) {
-        return userInfoDir + fileName;
+    public void writeUserInfo(UserData data) {
+        String filePath = userInfoDir + File.separator + userInfoFileName;
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter(filePath)) {
+            gson.toJson(data, writer);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String getFilePath() {
+        return userInfoDir + userInfoFileName;
     }
 }

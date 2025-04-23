@@ -10,4 +10,6 @@ module com.devmarco.linearmind {
 
     opens com.devmarco.linearmind to javafx.fxml;
     exports com.devmarco.linearmind;
+
+    opens com.devmarco.linearmind.domain to com.google.gson;
 }

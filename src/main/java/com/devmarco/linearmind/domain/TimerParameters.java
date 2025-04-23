@@ -1,5 +1,7 @@
 package com.devmarco.linearmind.domain;
 
+import com.devmarco.linearmind.util.FileManager;
+
 public class TimerParameters {
     private static long activeTime;
     private static long intervalTime;
@@ -8,10 +10,13 @@ public class TimerParameters {
     private long counter = 0;
     private int cicles = 0;
 
-    public TimerParameters(long activeTime, long intervalTime, long interruptionTime) {
-        TimerParameters.activeTime = activeTime;
-        TimerParameters.intervalTime = intervalTime;
-        TimerParameters.interruptionTime = interruptionTime;
+    public TimerParameters() {
+        FileManager fileManager = FileManager.getInstance();
+        UserData userInfo = fileManager.readUserInfo();
+
+        activeTime = Long.parseLong(userInfo.getActiveTime());
+        intervalTime = Long.parseLong(userInfo.getIntervalTime());
+        interruptionTime = Long.parseLong(userInfo.getInterruptionTime());
     }
 
     //Controlling functions

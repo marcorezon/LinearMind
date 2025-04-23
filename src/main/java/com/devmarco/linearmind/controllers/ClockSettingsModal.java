@@ -1,6 +1,8 @@
 package com.devmarco.linearmind.controllers;
 
 import com.devmarco.linearmind.domain.TimerParameters;
+import com.devmarco.linearmind.domain.UserData;
+import com.devmarco.linearmind.util.FileManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -34,6 +36,15 @@ public class ClockSettingsModal {
 
     @FXML
     private void closeModal() {
+        FileManager fileManager = FileManager.getInstance();
+        UserData userData = new UserData();
+
+        userData.setActiveTime("" + TimerParameters.getActiveTime());
+        userData.setIntervalTime("" + TimerParameters.getIntervalTime());
+        userData.setInterruptionTime("" + TimerParameters.getInterruptionTime());
+
+        fileManager.writeUserInfo(userData);
+
         if (modalStage != null) {
             modalStage.close();
         }

@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Clock {
 
-    private TimerParameters timerParameters = new TimerParameters(10, 5, 0);
+    private TimerParameters timerParameters = new TimerParameters();
 
     private boolean isTimeRunning = false;
     private boolean isInterval = false;

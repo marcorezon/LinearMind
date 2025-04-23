@@ -10,8 +10,6 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
 
-    FileManager fileManager = new FileManager();
-
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/devmarco/linearmind/fxml/core.fxml"));
@@ -19,7 +17,6 @@ public class HelloApplication extends Application {
         stage.setTitle("LinearMind");
         stage.setScene(scene);
         stage.show();
-        fileManager.getFilePath();
     }
 
     public static void main(String[] args) {

@@ -10,6 +10,10 @@ import javafx.stage.Stage;
 
 public class ClockSettingsModal {
 
+    private Boolean hasParameterAlteration = false;
+
+    private Stage modalStage;
+
     @FXML
     private Label timer;
 
@@ -28,22 +32,22 @@ public class ClockSettingsModal {
     @FXML
     private Slider interruptionSlider;
 
-    private Stage modalStage;
-
     public void setStage(Stage modalStage) {
         this.modalStage = modalStage;
     }
 
     @FXML
     private void closeModal() {
-        FileManager fileManager = FileManager.getInstance();
-        UserData userData = new UserData();
+        if (hasParameterAlteration) {
+            FileManager fileManager = FileManager.getInstance();
+            UserData userData = new UserData();
 
-        userData.setActiveTime("" + TimerParameters.getActiveTime());
-        userData.setIntervalTime("" + TimerParameters.getIntervalTime());
-        userData.setInterruptionTime("" + TimerParameters.getInterruptionTime());
+            userData.setActiveTime("" + TimerParameters.getActiveTime());
+            userData.setIntervalTime("" + TimerParameters.getIntervalTime());
+            userData.setInterruptionTime("" + TimerParameters.getInterruptionTime());
 
-        fileManager.writeUserInfo(userData);
+            fileManager.writeUserInfo(userData);
+        }
 
         if (modalStage != null) {
             modalStage.close();
@@ -72,16 +76,19 @@ public class ClockSettingsModal {
         timerSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             TimerParameters.setActiveTime(newValue.intValue());
             timer.setText(newValue.intValue() + " minutes");
+            hasParameterAlteration = true;
         });
 
         intervalSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             TimerParameters.setIntervalTime(newValue.intValue());
             interval.setText(newValue.intValue() + " minutes");
+            hasParameterAlteration = true;
         });
 
         interruptionSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             TimerParameters.setInterruptionTime(newValue.intValue());
             interruption.setText(newValue.intValue() + " minutes");
+            hasParameterAlteration = true;
         });
     }
 }

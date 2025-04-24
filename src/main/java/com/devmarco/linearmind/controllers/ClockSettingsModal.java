@@ -44,9 +44,9 @@ public class ClockSettingsModal {
             FileManager fileManager = FileManager.getInstance();
             UserData userData = new UserData();
 
-            userData.setActiveTime("" + timerParameters.getActiveTime());
-            userData.setIntervalTime("" + timerParameters.getIntervalTime());
-            userData.setInterruptionTime("" + timerParameters.getInterruptionTime());
+            userData.setActiveTime(timerParameters.getActiveTime());
+            userData.setIntervalTime(timerParameters.getIntervalTime());
+            userData.setInterruptionTime(timerParameters.getInterruptionTime());
 
             fileManager.writeUserInfo(userData);
         }

@@ -6,9 +6,9 @@ public class TimerParameters {
 
     private static TimerParameters instance;
 
-    private long activeTime;
-    private long intervalTime;
-    private long interruptionTime;
+    private int activeTime;
+    private int intervalTime;
+    private int interruptionTime;
 
     private long counter = 0;
     private int cicles = 0;
@@ -17,9 +17,9 @@ public class TimerParameters {
         FileManager fileManager = FileManager.getInstance();
         UserData userInfo = fileManager.readUserInfo();
 
-        activeTime = Long.parseLong(userInfo.getActiveTime());
-        intervalTime = Long.parseLong(userInfo.getIntervalTime());
-        interruptionTime = Long.parseLong(userInfo.getInterruptionTime());
+        activeTime = userInfo.getActiveTime();
+        intervalTime = userInfo.getIntervalTime();
+        interruptionTime = userInfo.getInterruptionTime();
     }
 
     public static TimerParameters getInstance(){
@@ -46,27 +46,27 @@ public class TimerParameters {
 
     //Getters and setters
 
-    public long getActiveTime() {
+    public int getActiveTime() {
         return activeTime;
     }
 
-    public void setActiveTime(long activeTime) {
+    public void setActiveTime(int activeTime) {
         this.activeTime = activeTime;
     }
 
-    public long getIntervalTime() {
+    public int getIntervalTime() {
         return intervalTime;
     }
 
-    public void setIntervalTime(long intervalTime) {
+    public void setIntervalTime(int intervalTime) {
         this.intervalTime = intervalTime;
     }
 
-    public long getInterruptionTime() {
+    public int getInterruptionTime() {
         return interruptionTime;
     }
 
-    public void setInterruptionTime(long interruptionTime) {
+    public void setInterruptionTime(int interruptionTime) {
         this.interruptionTime = interruptionTime;
     }
 

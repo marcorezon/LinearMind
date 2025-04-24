@@ -2,31 +2,31 @@ package com.devmarco.linearmind.domain;
 
 
 public class UserData {
-    private String activeTime;
-    private String intervalTime;
-    private String interruptionTime;
+    private int activeTime;
+    private int intervalTime;
+    private int interruptionTime;
 
-    public String getActiveTime() {
+    public int getActiveTime() {
         return activeTime;
     }
 
-    public void setActiveTime(String activeTime) {
+    public void setActiveTime(int activeTime) {
         this.activeTime = activeTime;
     }
 
-    public String getIntervalTime() {
+    public int getIntervalTime() {
         return intervalTime;
     }
 
-    public void setIntervalTime(String intervalTime) {
+    public void setIntervalTime(int intervalTime) {
         this.intervalTime = intervalTime;
     }
 
-    public String getInterruptionTime() {
+    public int getInterruptionTime() {
         return interruptionTime;
     }
 
-    public void setInterruptionTime(String interruptionTime) {
+    public void setInterruptionTime(int interruptionTime) {
         this.interruptionTime = interruptionTime;
     }
 }

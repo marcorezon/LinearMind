@@ -52,9 +52,9 @@ public class FileManager {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try (FileWriter writer = new FileWriter(filepath)) {
             UserData userData = new UserData();
-            userData.setActiveTime("25");
-            userData.setIntervalTime("5");
-            userData.setInterruptionTime("20");
+            userData.setActiveTime(25);
+            userData.setIntervalTime(5);
+            userData.setInterruptionTime(20);
             gson.toJson(userData, writer);
         } catch (IOException e) {
             throw new RuntimeException(e);

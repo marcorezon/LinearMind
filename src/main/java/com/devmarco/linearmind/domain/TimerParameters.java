@@ -2,6 +2,8 @@ package com.devmarco.linearmind.domain;
 
 import com.devmarco.linearmind.util.FileManager;
 
+import java.time.Duration;
+
 public class TimerParameters {
 
     private static TimerParameters instance;
@@ -10,7 +12,7 @@ public class TimerParameters {
     private int intervalTime;
     private int interruptionTime;
 
-    private long counter = 0;
+    private Duration counter = Duration.ZERO;
     private int cicles = 0;
 
     public TimerParameters() {
@@ -22,7 +24,7 @@ public class TimerParameters {
         interruptionTime = userInfo.getInterruptionTime();
     }
 
-    public static TimerParameters getInstance(){
+    public static TimerParameters getInstance() {
         if (instance == null) {
             instance = new TimerParameters();
         }
@@ -33,11 +35,17 @@ public class TimerParameters {
     //Controlling functions
 
     public void increaseCounter() {
-        counter++;
+        counter = counter.plusSeconds(1);
     }
 
     public void resetCounter() {
-        counter = 0;
+        counter = Duration.ZERO;
+    }
+
+    public String getFormattedCounter() {
+        return String.format("%02d:%02d",
+                counter.toMinutes() % 60,
+                counter.getSeconds() % 60);
     }
 
     public void increaseCicles() {
@@ -70,12 +78,12 @@ public class TimerParameters {
         this.interruptionTime = interruptionTime;
     }
 
-    public long getCounter() {
+    public Duration getCounter() {
         return counter;
     }
 
-    public void setCounter(long counter) {
-        this.counter = counter;
+    public void setCounter(Duration newCounter) {
+        this.counter = newCounter;
     }
 
     public int getCicles() {

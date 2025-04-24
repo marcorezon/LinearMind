@@ -74,8 +74,8 @@ public class ClockController {
     private void startLabelUpdate() {
         if (timeline == null) {
             timeline = new Timeline(new KeyFrame(Duration.millis(1000), e -> {
-                timer.setText(clock.getTimerParameters().getCounter() + "s");
-                if (clock.getTimerParameters().getCounter() == 0) {
+                timer.setText(clock.getTimerParameters().getFormattedCounter());
+                if (clock.getTimerParameters().getCounter() == java.time.Duration.ZERO) {
                     displayButton(stopButton, startButton);
                     updateLabels();
                 }

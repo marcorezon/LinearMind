@@ -34,7 +34,7 @@ public class Clock {
                     return;
                 }
                 timerParameters.increaseCounter();
-                System.out.println("Time: " + timerParameters.getCounter() + "s");
+                System.out.println("Time: " + timerParameters.getCounter().toSeconds() + "s");
             } catch (Exception e) {
                 System.out.println("Timer error.");
                 scheduler.shutdown();
@@ -52,9 +52,9 @@ public class Clock {
 
     private boolean shouldStop() {
         if (isInterval) {
-            return timerParameters.getCounter() == TimerParameters.getInstance().getIntervalTime();
+            return timerParameters.getCounter().toMinutes() == TimerParameters.getInstance().getIntervalTime();
         }
-        return timerParameters.getCounter() == TimerParameters.getInstance().getActiveTime();
+        return timerParameters.getCounter().toMinutes() == TimerParameters.getInstance().getActiveTime();
     }
 
     public TimerParameters getTimerParameters() {

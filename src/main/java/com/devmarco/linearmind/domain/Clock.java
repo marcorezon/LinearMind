@@ -34,9 +34,7 @@ public class Clock {
                     return;
                 }
                 timerParameters.increaseCounter();
-                System.out.println("Time: " + timerParameters.getCounter().toSeconds() + "s");
             } catch (Exception e) {
-                System.out.println("Timer error.");
                 scheduler.shutdown();
             }
         }, 0, 1, TimeUnit.SECONDS);
@@ -59,9 +57,5 @@ public class Clock {
 
     public TimerParameters getTimerParameters() {
         return timerParameters;
-    }
-
-    public void setTimerParameters(TimerParameters timerParameters) {
-        this.timerParameters = timerParameters;
     }
 }

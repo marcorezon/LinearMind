@@ -1,6 +1,9 @@
 package com.devmarco.linearmind.domain;
 
 import com.devmarco.linearmind.util.FileManager;
+import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 
 import java.time.Duration;
 
@@ -8,11 +11,14 @@ public class TimerParameters {
 
     private static TimerParameters instance;
 
+    private final SimpleStringProperty formattedCounter = new SimpleStringProperty("00:00");
+
     private int activeTime;
     private int intervalTime;
     private int interruptionTime;
 
     private Duration counter = Duration.ZERO;
+
     private int cicles = 0;
 
     public TimerParameters() {
@@ -24,6 +30,28 @@ public class TimerParameters {
         interruptionTime = userInfo.getInterruptionTime();
     }
 
+    //Controlling functions
+    public void increaseCounter() {
+        counter = counter.plusSeconds(1);
+        formatCounter();
+    }
+
+    public void increaseCicles() {
+        cicles++;
+    }
+
+    public void resetCounter() {
+        counter = Duration.ZERO;
+    }
+
+    public void formatCounter() {
+        Platform.runLater(() -> {
+            formattedCounter.set(String.format("%02d:%02d", counter.toMinutes() % 60, counter.getSeconds() % 60));
+        });
+    }
+
+    //Getters and setters
+
     public static TimerParameters getInstance() {
         if (instance == null) {
             instance = new TimerParameters();
@@ -32,27 +60,17 @@ public class TimerParameters {
 
     }
 
-    //Controlling functions
-
-    public void increaseCounter() {
-        counter = counter.plusSeconds(1);
-    }
-
-    public void resetCounter() {
-        counter = Duration.ZERO;
+    public static void setInstance(TimerParameters instance) {
+        TimerParameters.instance = instance;
     }
 
     public String getFormattedCounter() {
-        return String.format("%02d:%02d",
-                counter.toMinutes() % 60,
-                counter.getSeconds() % 60);
+        return formattedCounter.get();
     }
 
-    public void increaseCicles() {
-        cicles++;
+    public SimpleStringProperty formattedCounterProperty() {
+        return formattedCounter;
     }
-
-    //Getters and setters
 
     public int getActiveTime() {
         return activeTime;
@@ -82,8 +100,8 @@ public class TimerParameters {
         return counter;
     }
 
-    public void setCounter(Duration newCounter) {
-        this.counter = newCounter;
+    public void setCounter(Duration counter) {
+        this.counter = counter;
     }
 
     public int getCicles() {

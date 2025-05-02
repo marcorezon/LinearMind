@@ -1,0 +1,19 @@
+Label, Button {
+    -fx-font-family: 'Roboto';
+}
+
+Label {
+    -fx-font-size: 14px;
+}
+
+Button {
+    -fx-font-size: 15px;
+}
+
+.title-label {
+    -fx-font-size: 25px;
+}
+
+.timer-label {
+    -fx-font-size: 18px;
+}
